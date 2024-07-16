@@ -1,5 +1,7 @@
 # libcron
 A C++ scheduling library using cron formatting.
+-- includes minor modifications to work with MSVC 2022 C++20.
+-- tests not yet working.
 
 # Using the Scheduler
 

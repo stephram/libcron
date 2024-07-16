@@ -2,7 +2,11 @@
 #include <tuple>
 
 using namespace std::chrono;
+#ifdef __cplusplus > 201703L
+#else
 using namespace date;
+#endif
+
 
 namespace libcron
 {
@@ -18,7 +22,11 @@ namespace libcron
         while (!done && --max_iterations > 0)
         {
             bool date_changed = false;
-            year_month_day ymd = date::floor<days>(curr);
+#ifdef __cplusplus > 201703L
+            year_month_day ymd = std::chrono::floor<days>(curr);
+#else
+            year_month_day ymd = days::floor<days>(curr);
+#endif
 
             // Add months until one of the allowed days are found, or stay at the current one.
             if (data.get_months().find(static_cast<Months>(unsigned(ymd.month()))) == data.get_months().end())
@@ -28,7 +36,7 @@ namespace libcron
                 curr = s;
                 date_changed = true;
             }
-                // If all days are allowed (or the field is ignored via '?'), then the 'day of week' takes precedence.
+            // If all days are allowed (or the field is ignored via '?'), then the 'day of week' takes precedence.
             else if (data.get_day_of_month().size() != CronData::value_of(DayOfMonth::Last))
             {
                 // Add days until one of the allowed days are found, or stay at the current one.
@@ -44,7 +52,11 @@ namespace libcron
             else
             {
                 //Add days until the current weekday is one of the allowed weekdays
+#ifdef __cplusplus > 201703L
+                year_month_weekday ymw = std::chrono::floor<days>(curr);
+#else
                 year_month_weekday ymw = date::floor<days>(curr);
+#endif
 
                 if (data.get_day_of_week().find(static_cast<DayOfWeek>(ymw.weekday().c_encoding())) ==
                     data.get_day_of_week().end())
