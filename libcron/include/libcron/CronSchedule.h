@@ -2,14 +2,17 @@
 
 #include "libcron/CronData.h"
 #include <chrono>
+
 #if defined(_MSC_VER)
 #pragma warning(push)
 #pragma warning(disable:4244)
 #endif
+
 #ifdef __cplusplus > 201703L
 #else
 #include <date/date.h>
 #endif
+
 #if defined(_MSC_VER)
 #pragma warning(pop)
 #endif

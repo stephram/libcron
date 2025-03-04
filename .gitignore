@@ -35,3 +35,17 @@ cmake-build-*
 .idea/workspace.xml
 out/*
 test/out*
+.vs/top/v17
+CMakeFiles
+x64/Release
+x64
+libcron/include/libcron/.vshistory
+libcron/.vshistory
+libcron/src/.vshistory
+test/.vshistory
+libcron/libcron.dir/Release
+libcron/libcron.dir
+libcron/out
+.vs/top/FileContentIndex
+*.tlog
+*.log

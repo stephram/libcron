@@ -2,6 +2,7 @@
 
 #include <string>
 #include <chrono>
+#include <limits>
 #include <memory>
 #include <mutex>
 #include <map>
@@ -175,7 +176,7 @@ namespace libcron
         std::chrono::system_clock::duration d{};
         if (tasks.empty())
         {
-            d = std::numeric_limits<std::chrono::minutes>::max();
+            d = std::chrono::minutes(0); // std::numeric_limits<std::chrono::minutes>::max();
         }
         else
         {

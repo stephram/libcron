@@ -2,6 +2,7 @@
 
 #include <functional>
 #include <chrono>
+#include <limits>
 #include <utility>
 #include "CronData.h"
 #include "CronSchedule.h"
@@ -75,7 +76,7 @@ namespace libcron
             std::chrono::system_clock::duration delay = std::chrono::seconds(-1);
             TaskFunction task;
             bool valid = false;
-            std::chrono::system_clock::time_point last_run = std::numeric_limits<std::chrono::system_clock::time_point>::min();
+            std::chrono::system_clock::time_point last_run = std::chrono::system_clock::from_time_t(0); // std::numeric_limits<std::chrono::system_clock::time_point>::min();
     };
 }
 

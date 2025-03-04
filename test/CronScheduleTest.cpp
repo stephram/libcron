@@ -1,14 +1,24 @@
 #include <catch.hpp>
 #include <chrono>
+#ifdef __cplusplus > 201703L
+#else
 #include <date/date.h>
+#endif
 #include <libcron/include/libcron/Cron.h>
 #include <iostream>
 
 using namespace libcron;
+#ifdef __cplusplus > 201703L
+#else
 using namespace date;
+#endif
 using namespace std::chrono;
 
+#ifdef __cplusplus > 201703L
+system_clock::time_point DT(std::chrono::year_month_day ymd, hours h = hours{ 0 }, minutes m = minutes{ 0 }, seconds s = seconds{ 0 })
+#else
 system_clock::time_point DT(year_month_day ymd, hours h = hours{0}, minutes m = minutes{0}, seconds s = seconds{0})
+#endif
 {
     sys_days t = ymd;
     auto sum = t + h + m + s;

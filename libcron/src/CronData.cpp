@@ -1,7 +1,15 @@
+#ifdef __cplusplus > 201703L
+#include <chrono>
+#else
 #include <date/date.h>
+#endif
 #include "libcron/CronData.h"
 
+using namespace std::chrono;
+#ifdef __cplusplus > 201703L
+#else
 using namespace date;
+#endif
 
 namespace libcron
 {
